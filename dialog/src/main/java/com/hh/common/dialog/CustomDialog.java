@@ -81,7 +81,8 @@ public class CustomDialog {
         }
 
         public Builder setSingleButton(CharSequence button, final View.OnClickListener listener) {
-            return setButton(cancelTextView, button, listener, true);
+            showConfirmButton = !TextUtils.isEmpty(button);
+            return setButton(confirmTextView, button, listener, true);
         }
 
         public Builder setCanceledOnTouchOutside(boolean cancelOutside) {
@@ -128,6 +129,13 @@ public class CustomDialog {
                 });
             }
 
+            if (showCancelButton && !showConfirmButton) {
+                cancelTextView.setBackgroundResource(R.drawable.dialog_single_button_bg);
+            } else if (!showCancelButton && showConfirmButton) {
+                confirmTextView.setBackgroundResource(R.drawable.dialog_single_button_bg);
+            }
+
+
             if (!(showTitle && showMessage)) {
                 DisplayMetrics density = mContext.getResources().getDisplayMetrics();
                 Log.d("Test", "updateLayout: " + density);
@@ -137,8 +145,10 @@ public class CustomDialog {
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, minHeight);
             if (showTitle && !showMessage) {
                 titleTextView.setLayoutParams(layoutParams);
+                titleTextView.setPadding(0, 0, 0, 0);
             } else if (!showTitle && showMessage) {
                 msgTextView.setLayoutParams(layoutParams);
+                msgTextView.setPadding(0, 0, 0, 0);
             }
 
         }
