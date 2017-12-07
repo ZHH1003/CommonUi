@@ -145,10 +145,10 @@ public class CustomDialog {
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, minHeight);
             if (showTitle && !showMessage) {
                 titleTextView.setLayoutParams(layoutParams);
-                titleTextView.setPadding(0, 0, 0, 0);
+                titleTextView.setPadding(titleTextView.getPaddingLeft(), 0, titleTextView.getPaddingRight(), 0);
             } else if (!showTitle && showMessage) {
                 msgTextView.setLayoutParams(layoutParams);
-                msgTextView.setPadding(0, 0, 0, 0);
+                msgTextView.setPadding(msgTextView.getPaddingLeft(), 0, msgTextView.getPaddingRight(), 0);
             }
 
         }

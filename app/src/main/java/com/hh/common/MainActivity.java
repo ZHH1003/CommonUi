@@ -16,25 +16,38 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        final CustomDialog.Builder builder = new CustomDialog.Builder(this);
-
-
-        Spanned spanned = Html.fromHtml(getResources().getString(R.string.button_text));
-
-        builder
-                .setTitle("前三期不能提前还")
-                .setMessage("现在处在第三期，11月3号把第三期还了之后")
-//                .setCancelButton("取消", null)
-//                .setConfirmButton(spanned, null)
-                .setSingleButton("我知道了", null)
-        .setCanceledOnTouchOutside(false)
-                ;
-        builder.show();
+        final Spanned spanned = Html.fromHtml(getResources().getString(R.string.button_text));
 
         findViewById(R.id.open).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                builder.show();
+                CustomDialog.Builder builder = new CustomDialog.Builder(MainActivity.this);
+                builder.setTitle("亲爱的用户,你还没有借款记录,需要资金周转记得找卡贷君哈!")
+                        .setMessage("亲爱的用户,你还没有借款记录,需要资金周转记得找卡贷君哈!")
+                        .setSingleButton("我知道了", null)
+                        .show();
+            }
+        });
+
+        findViewById(R.id.textView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomDialog.Builder builder = new CustomDialog.Builder(MainActivity.this);
+                builder.setTitle("爱的用户,你还没有借款记录,需要资金周转记得找卡贷君哈!")
+                        .setTitle(spanned)
+                        .setSingleButton("确定", null)
+                        .show();
+            }
+        });
+
+
+        findViewById(R.id.textView2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomDialog.Builder builder = new CustomDialog.Builder(MainActivity.this);
+                builder.setMessage("亲爱的用户,你还没有借款记录,需要资金周转记得找卡贷君哈!")
+                        .setSingleButton("取消", null)
+                        .show();
             }
         });
     }
