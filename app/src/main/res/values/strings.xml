@@ -3,4 +3,6 @@
 
     <string name="button_text">&lt;big>&lt;font color="#ff7043">确定&lt;/font>&lt;/big></string>
 
+    <string name="menu">&lt;font color="#184AE0">检查更新&lt;/font></string>
+
 </resources>
